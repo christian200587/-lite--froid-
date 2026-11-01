@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Élite Froid : climatisation générale, installation, entretien et dépannage.">
+
+  <title>Élite Froid | Climatisation générale</title>
+
+  <style>
+    :root {
+      --bleu-fonce: #071d38;
+      --bleu: #0755a3;
+      --bleu-clair: #55c6f2;
+      --texte: #17314a;
+      --fond: #f2f8fc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--texte);
+      background: var(--fond);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .conteneur {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      background: var(--bleu-fonce);
+      color: white;
+    }
+
+    .navigation {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 14px 0;
+    }
+
+    .logo {
+      color: white;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--bleu-clair);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    nav a {
+      color: white;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: var(--bleu-clair);
+    }
+
+    .hero {
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(3, 22, 43, .94), rgba(5, 51, 91, .75)),
+        url("https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1800&q=80")
+        center / cover;
+      padding: 110px 0;
+    }
+
+    .hero-contenu {
+      max-width: 690px;
+    }
+
+    .etiquette {
+      color: #a9e9ff;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 6vw, 4.2rem);
+      line-height: 1.12;
+      margin: 18px 0;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #e2f3ff;
+      max-width: 570px;
+    }
+
+    .boutons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .bouton {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: transform .2s, background .2s;
+    }
+
+    .bouton:hover {
+      transform: translateY(-2px);
+    }
+
+    .bouton-whatsapp {
+      background: #20b96b;
+      color: white;
+    }
+
+    .bouton-whatsapp:hover {
+      background: #159453;
+    }
+
+    .bouton-secondaire {
+      border: 1px solid rgba(255, 255, 255, .7);
+      color: white;
+    }
+
+    section {
+      padding: 75px 0;
+    }
+
+    .titre-section {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 40px;
+    }
+
+    .titre-section h2 {
+      color: var(--bleu-fonce);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      line-height: 1.2;
+      margin: 8px 0 14px;
+    }
+
+    .titre-section p {
+      color: #526b80;
+    }
+
+    .sur-titre {
+      color: var(--bleu);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .grille {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .carte {
+      background: white;
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 10px 35px rgba(6, 42, 75, .07);
+      border: 1px solid #e4eff6;
+    }
+
+    .icone {
+      display: flex;
+      width: 52px;
+      height: 52px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: #e6f5fd;
+      font-size: 1.6rem;
+    }
+
+    .carte h3 {
+      color: var(--bleu-fonce);
+      margin-bottom: 8px;
+    }
+
+    .carte p {
+      margin-bottom: 0;
+      color: #526b80;
+    }
+
+    .apropos {
+      background: white;
+    }
+
+    .apropos-contenu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .visuel {
+      min-height: 300px;
+      border-radius: 18px;
+      background:
+        linear-gradient(145deg, rgba(4, 38, 69, .8), rgba(0, 103, 166, .55)),
+        url("https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=80")
+        center / cover;
+      display: flex;
+      align-items: flex-end;
+      padding: 30px;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .apropos h2 {
+      color: var(--bleu-fonce);
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .contact {
+      background: linear-gradient(120deg, #071d38, #0755a3);
+      color: white;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 2.2rem;
+      margin-top: 0;
+    }
+
+    .contact p {
+      color: #d7efff;
+    }
+
+    .contact .boutons {
+      justify-content: center;
+    }
+
+    .telephone {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #041529;
+      color: #bbcfdf;
+      padding: 24px 0;
+      text-align: center;
+      font-size: .9rem;
+    }
+
+    @media (max-width: 720px) {
+      .navigation {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .hero {
+        padding: 75px 0;
+      }
+
+      .grille,
+      .apropos-contenu {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="conteneur navigation">
+      <a class="logo" href="#accueil">❄ ÉLITE <span>FROID</span></a>
+
+      <nav aria-label="Navigation principale">
+        <a href="#accueil">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#apropos">À propos</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="conteneur hero-contenu">
+        <span class="etiquette">Climatisation générale</span>
+        <h1>Le confort commence par un air agréable.</h1>
+        <p>
+          Bienvenue chez Élite Froid. Parlons de vos besoins en climatisation
+          pour votre maison, votre bureau ou votre commerce.
+        </p>
+
+        <div class="boutons">
+          <a
+            class="bouton bouton-whatsapp"
+            href="https://wa.me/243987554402?text=Bonjour%20%C3%89lite%20Froid%2C%20je%20souhaite%20obtenir%20des%20informations%20sur%20vos%20services%20de%20climatisation."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Nous contacter sur WhatsApp
+          </a>
+
+          <a class="bouton bouton-secondaire" href="#services">
+            Découvrir nos services
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="conteneur">
+        <div class="titre-section">
+          <span class="sur-titre">Nos services</span>
+          <h2>Des solutions pour votre climatisation</h2>
+          <p>Contactez-nous pour discuter de votre installation et de vos besoins.</p>
+        </div>
+
+        <div class="grille">
+          <article class="carte">
+            <div class="icone" aria-hidden="true">❄️</div>
+            <h3>Installation</h3>
+            <p>
+              Vous souhaitez installer un climatiseur ? Parlons de votre espace
+              et de la solution adaptée.
+            </p>
+          </article>
+
+          <article class="carte">
+            <div class="icone" aria-hidden="true">🔧</div>
+            <h3>Entretien</h3>
+            <p>
+              Prenez soin de votre système de climatisation avec un entretien
+              adapté à vos besoins.
+            </p>
+          </article>
+
+          <article class="carte">
+            <div class="icone" aria-hidden="true">⚙️</div>
+            <h3>Dépannage</h3>
+            <p>
+              Votre climatiseur rencontre un problème ? Contactez-nous pour
+              nous expliquer la situation.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="apropos" id="apropos">
+      <div class="conteneur apropos-contenu">
+        <div class="visuel">
+          Élite Froid<br>Votre confort, notre priorité.
+        </div>
+
+        <div>
+          <span class="sur-titre">À propos</span>
+          <h2>La climatisation au service de votre confort</h2>
+          <p>
+            Élite Froid est une activité spécialisée dans la climatisation
+            générale. Nous sommes à votre écoute pour vos projets,
+            vos questions et vos besoins en entretien.
+          </p>
+          <p>
+            Écrivez-nous sur WhatsApp pour nous présenter votre demande.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="conteneur">
+        <h2>Un projet ou une question ?</h2>
+        <p>Contactez Élite Froid pour parler de vos besoins en climatisation.</p>
+
+        <a class="telephone" href="tel:+243987554402">
+          +243 987 554 402
+        </a>
+
+        <div class="boutons">
+          <a
+            class="bouton bouton-whatsapp"
+            href="https://wa.me/243987554402?text=Bonjour%20%C3%89lite%20Froid%2C%20je%20souhaite%20vous%20contacter."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Écrire sur WhatsApp
+          </a>
+
+          <a
+            class="bouton bouton-secondaire"
+            href="https://www.facebook.com/share/1JcVJea5nt/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Retrouvez-nous sur Facebook
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="conteneur">
+      © 2026 Élite Froid — Climatisation générale
+    </div>
+  </footer>
+</body>
+</html>
