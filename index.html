@@ -20,7 +20,7 @@
   <meta property="og:image:alt" content="Unités extérieures de climatisation installées par Élite Froid">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://christian200587.github.io/-lite--froid-/">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230a2540'/%3E%3Cg fill='none' stroke='%239adcf5' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 4v16M5 8l14 8M5 16 19 8'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 1200%22 width=%221200%22 height=%221200%22%3E%3Crect width=%221200%22 height=%221200%22 fill=%22%230a2540%22/%3E%3Cg transform=%22translate%28240%2C240%29 scale%2830.0%29%22%3E%3Cg fill=%22none%22 stroke=%22%239adcf5%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7%22/%3E%3Cpath d=%22m9 4 3 2 3-2M9 20l3-2 3 2M4 10.5l3.5-.3L6 7M18 7l-1.5 3.2 3.5.3M4 13.5l3.5.3L6 17M18 17l-1.5-3.2 3.5-.3%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,6 +44,7 @@
     }
 
     * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
     html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
     body {
@@ -116,7 +117,7 @@
       font-stretch: 125%; font-weight: 800; font-size: 1.15rem;
       text-decoration: none; letter-spacing: .02em;
     }
-    .logo svg { width: 26px; height: 26px; color: var(--givre); }
+    .logo-image { display: block; height: 26px; width: auto; }
     nav { display: flex; gap: 24px; margin-left: auto; }
     nav a { text-decoration: none; font-size: .95rem; color: #cfe3f2; }
     nav a:hover { color: var(--blanc); }
@@ -335,6 +336,59 @@
     .erreur { grid-column: 1 / -1; margin: 0; color: #b3261e; font-weight: 600; min-height: 1.6em; }
     .formulaire .boutons { grid-column: 1 / -1; }
 
+    /* Calculateur */
+    .calcul { background: var(--glacier); }
+    .calcul-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .calcul-form { display: grid; gap: 18px; margin-top: 28px; }
+    .calcul-dims { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .case { display: flex; align-items: center; gap: 10px; font-weight: 600; cursor: pointer; }
+    .case input { width: 20px; height: 20px; accent-color: var(--bleu); }
+    .resultat { background: var(--nuit); color: var(--blanc); border-radius: 22px; padding: 32px; }
+    .resultat-titre { margin: 0; color: #c7dcec; font-weight: 600; }
+    .resultat-valeur { margin: 4px 0 0; line-height: 1; }
+    .resultat-valeur #res-btu {
+      font-stretch: 75%; font-weight: 800; font-size: clamp(3.4rem, 9vw, 5rem);
+      color: var(--givre); font-variant-numeric: tabular-nums;
+    }
+    .resultat-valeur .unite { font-size: 1.4rem; font-weight: 700; }
+    .resultat-cv { margin: 8px 0 0; font-size: 1.15rem; font-weight: 700; color: var(--soleil); }
+    .formule {
+      margin: 24px 0; padding: 18px 20px; border-radius: 14px;
+      background: rgba(255,255,255,.06); font-size: .95rem; color: #d7e7f3;
+    }
+    .formule p { margin: 0; }
+    .formule ul { margin: 8px 0 12px; padding-left: 18px; }
+    .formule li { margin: 2px 0; }
+    .formule .application { font-variant-numeric: tabular-nums; color: var(--blanc); font-weight: 600; }
+    .formule .arrondi { margin-top: 4px; }
+    .resultat .bouton { width: 100%; justify-content: center; }
+
+    /* Questions fréquentes */
+    .faq { background: var(--blanc); }
+    .faq-grille { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; }
+    .faq-liste { border-top: 1px solid var(--ligne); }
+    .faq details { border-bottom: 1px solid var(--ligne); }
+    .faq summary {
+      cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative;
+      font-weight: 700; font-size: 1.08rem; color: var(--nuit);
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+      font-size: 1.6rem; font-weight: 400; color: var(--bleu); transition: transform .2s;
+    }
+    .faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+    .faq details p { margin: 0 0 20px; color: var(--gris); max-width: 62ch; }
+    .faq details a { color: var(--bleu); font-weight: 600; }
+
+    /* Partage */
+    .partage { margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.14); }
+    .partage p { margin: 0 0 12px; font-size: .95rem; }
+    .bouton-partage { width: 100%; justify-content: center; background: var(--blanc); color: var(--nuit); }
+    .bouton-partage:hover { background: var(--givre); }
+    .footer-liens { display: flex; gap: 24px; align-items: center; }
+    .lien-partage { background: none; border: 0; padding: 0; font: inherit; color: #cfe3f2; text-decoration: underline; cursor: pointer; }
+
     /* À propos */
     .apropos { background: var(--blanc); }
     .apropos-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
@@ -378,6 +432,7 @@
       .service { grid-template-columns: 1fr; gap: 12px; }
       .etapes { grid-template-columns: repeat(2, 1fr); }
       .galerie { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
+      .calcul-grille, .faq-grille { grid-template-columns: 1fr; gap: 32px; }
     }
 
     @media (max-width: 720px) {
@@ -392,6 +447,8 @@
       .etapes { grid-template-columns: 1fr; }
       .formulaire { grid-template-columns: 1fr; padding: 22px; }
       .service { padding: 24px; }
+      .resultat { padding: 24px; }
+      footer .conteneur { flex-direction: column; }
 
       .barre-mobile {
         display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 8px;
@@ -409,6 +466,25 @@
       * { transition: none !important; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HVACBusiness",
+    "name": "Élite Froid",
+    "description": "Climatisation générale à Kinshasa : installation, entretien et dépannage de climatiseurs pour maisons, bureaux et commerces.",
+    "url": "https://christian200587.github.io/-lite--froid-/",
+    "image": "https://christian200587.github.io/-lite--froid-/apercu.jpg",
+    "telephone": "+243987554402",
+    "email": "elitefroid7.cd@gmail.com",
+    "areaServed": "Kinshasa",
+    "address": { "@type": "PostalAddress", "addressLocality": "Kinshasa", "addressCountry": "CD" },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "16:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "16:00" }
+    ],
+    "sameAs": ["https://www.facebook.com/share/1JcVJea5nt/"]
+  }
+  </script>
 </head>
 
 <body>
@@ -416,6 +492,7 @@
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="i-bulle" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path fill="currentColor" d="M9.2 8.3c.2-.4.5-.4.7-.4h.5c.2 0 .4 0 .5.4l.7 1.6c.1.2 0 .4-.1.6l-.5.6c-.1.1-.2.3 0 .5.3.6 1.4 1.9 2.7 2.4.2.1.4 0 .5-.1l.6-.7c.2-.2.4-.2.6-.1l1.5.7c.2.1.4.2.4.4 0 .5-.1 1.3-.9 1.7-.7.4-1.9.5-3.6-.3-2.2-1-3.6-3.2-3.8-3.6-.3-.5-.9-1.6-.1-3.1Z"/></symbol>
     <symbol id="i-message" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3C7 3 3 6.7 3 11.3c0 2.6 1.3 4.9 3.3 6.4V21l3-1.7c.9.3 1.8.4 2.7.4 5 0 9-3.7 9-8.4S17 3 12 3Z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m7.5 13.5 3-3.2 2.4 2 3.6-3.8"/></symbol>
+    <symbol id="i-partage" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></g></symbol>
     <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 3h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 14.5V18a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></symbol>
     <symbol id="i-flocon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7"/><path d="m9 4 3 2 3-2M9 20l3-2 3 2M4 10.5l3.5-.3L6 7M18 7l-1.5 3.2 3.5.3M4 13.5l3.5.3L6 17M18 17l-1.5-3.2 3.5-.3"/></g></symbol>
   </svg>
@@ -423,13 +500,12 @@
   <header>
     <div class="conteneur navigation">
       <a class="logo" href="#accueil" aria-label="Élite Froid, accueil">
-        <svg aria-hidden="true"><use href="#i-flocon"/></svg>
-        ÉLITE FROID
+        <svg class="logo-image" viewBox="0 0 148.1 26" width="148.1" height="26" aria-hidden="true" focusable="false"><g transform="scale(1.0833333333333333)"><g fill="none" stroke="#9adcf5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7"/><path d="m9 4 3 2 3-2M9 20l3-2 3 2M4 10.5l3.5-.3L6 7M18 7l-1.5 3.2 3.5.3M4 13.5l3.5.3L6 17M18 17l-1.5-3.2 3.5-.3"/></g></g><path transform="translate(36.0,19.693359375)" fill="#ffffff" d="M0.8624999999999999 0.0H10.835156249999999V-2.74921875H4.096875V-5.390625H10.323046875V-8.058984375H4.096875V-10.6375H10.835156249999999V-13.386718749999998H0.8624999999999999ZM4.6359375 -14.536718749999999H6.747265625L9.244921875 -17.402734374999998H6.3160156249999995Z M12.6226875 0.0H21.786749999999998V-2.74921875H15.857062499999998V-13.386718749999998H12.6226875Z M26.62896875 -13.386718749999998H23.39459375V0.0H26.62896875Z M28.2368125 -10.6375H32.180953124999995V0.0H35.415328124999995V-10.6375H39.35048437499999V-13.386718749999998H28.2368125Z M40.958328124999994 0.0H50.930984374999994V-2.74921875H44.192703124999994V-5.390625H50.418875V-8.058984375H44.192703124999994V-10.6375H50.930984374999994V-13.386718749999998H40.958328124999994Z  M56.76112499999999 0.0H59.99549999999999V-5.130078125H66.02401562499999V-7.789453125H59.99549999999999V-10.6375H66.42831249999999V-13.386718749999998H56.76112499999999Z M68.03615624999999 0.0H71.27053124999999V-4.447265625H73.35490625L75.53810937499999 0.0H78.95217187499999L76.382640625 -5.1031249999999995C77.78420312499999 -5.830859374999999 78.60178124999999 -7.142578124999999 78.60178124999999 -8.858593749999999C78.60178124999999 -11.634765624999998 76.652171875 -13.386718749999998 73.5525625 -13.386718749999998H68.03615624999999ZM71.27053124999999 -6.9898437499999995V-10.736328125H73.327953125C74.6306875 -10.736328125 75.43928125 -9.999609374999999 75.43928125 -8.858593749999999C75.43928125 -7.726562499999999 74.6306875 -6.9898437499999995 73.33693749999999 -6.9898437499999995Z M86.51665625 0.21562499999999998C90.12837499999999 0.21562499999999998 92.91353124999999 -2.3269531249999997 92.91353124999999 -6.684374999999999C92.91353124999999 -11.05078125 90.12837499999999 -13.60234375 86.51665625 -13.60234375C82.88696875 -13.60234375 80.11079687499999 -11.05078125 80.11079687499999 -6.684374999999999C80.11079687499999 -2.344921875 82.88696875 0.21562499999999998 86.51665625 0.21562499999999998ZM86.51665625 -2.60546875C84.594 -2.60546875 83.363140625 -4.096875 83.363140625 -6.684374999999999C83.363140625 -9.280859374999999 84.594 -10.78125 86.51665625 -10.78125C88.43032812499999 -10.78125 89.6611875 -9.280859374999999 89.6611875 -6.684374999999999C89.6611875 -4.096875 88.43032812499999 -2.60546875 86.51665625 -2.60546875Z M97.84559374999999 -13.386718749999998H94.61121874999999V0.0H97.84559374999999Z M104.906953125 0.0C109.02179687499999 0.0 111.59132812499999 -2.60546875 111.59132812499999 -6.693359374999999C111.59132812499999 -10.78125 108.98585937499999 -13.386718749999998 104.906953125 -13.386718749999998H99.93859375V0.0ZM103.17296875 -2.6953125V-10.69140625H104.70929687499999C107.171015625 -10.69140625 108.338984375 -9.334765625 108.338984375 -6.693359374999999C108.338984375 -4.0609375 107.19796875 -2.6953125 104.745234375 -2.6953125Z"/></svg>
       </a>
       <nav aria-label="Navigation principale">
         <a href="#services">Services</a>
         <a href="#realisations">Réalisations</a>
-        <a href="#deroulement">Comment ça marche</a>
+        <a href="#calculateur">Quelle clim ?</a>
         <a href="#demande">Demande</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -559,6 +635,75 @@
       </div>
     </section>
 
+    <!-- CALCULATEUR -->
+    <section class="calcul" id="calculateur">
+      <div class="conteneur calcul-grille">
+        <div>
+          <h2>Quelle clim pour votre pièce ?</h2>
+          <p class="intro">Indiquez la taille de la pièce : on vous donne la puissance conseillée. C’est une estimation, on la confirme toujours sur place.</p>
+
+          <form class="calcul-form" id="calcul-form" novalidate>
+            <fieldset class="champ">
+              <legend>Taille de la pièce</legend>
+              <div class="choix" role="radiogroup">
+                <label><input type="radio" name="mode" value="dim" checked> Longueur × largeur</label>
+                <label><input type="radio" name="mode" value="surface"> Je connais la surface</label>
+              </div>
+            </fieldset>
+
+            <div class="calcul-dims" id="bloc-dim">
+              <div class="champ">
+                <label for="longueur">Longueur (m)</label>
+                <input id="longueur" type="number" inputmode="decimal" min="1" max="50" step="0.1" value="4">
+              </div>
+              <div class="champ">
+                <label for="largeur">Largeur (m)</label>
+                <input id="largeur" type="number" inputmode="decimal" min="1" max="50" step="0.1" value="4">
+              </div>
+            </div>
+            <div class="champ" id="bloc-surface" hidden>
+              <label for="surface">Surface (m²)</label>
+              <input id="surface" type="number" inputmode="decimal" min="2" max="300" step="1" value="16">
+            </div>
+
+            <div class="champ">
+              <label for="usage">Type de pièce</label>
+              <select id="usage">
+                <option value="1">Chambre</option>
+                <option value="1.1">Salon ou bureau</option>
+                <option value="1.2">Commerce, salle avec du monde</option>
+              </select>
+            </div>
+
+            <label class="case"><input type="checkbox" id="soleil"> Pièce très exposée au soleil ou sous le toit</label>
+          </form>
+        </div>
+
+        <div class="resultat" aria-live="polite">
+          <p class="resultat-titre">Puissance conseillée</p>
+          <p class="resultat-valeur"><span id="res-btu">12 000</span> <span class="unite">BTU</span></p>
+          <p class="resultat-cv" id="res-cv">soit environ 1,5 CV</p>
+
+          <div class="formule">
+            <p><strong>Calcul :</strong> P = S × 600 × k<sub>u</sub> × k<sub>s</sub></p>
+            <ul>
+              <li><strong>P</strong> : puissance de froid (BTU/h)</li>
+              <li><strong>S</strong> : surface de la pièce (m²)</li>
+              <li><strong>600</strong> : besoin moyen par m² en climat chaud (BTU/h·m²)</li>
+              <li><strong>k<sub>u</sub></strong> : type de pièce (1 ; 1,1 ; 1,2)</li>
+              <li><strong>k<sub>s</sub></strong> : soleil ou toit (1 ou 1,15)</li>
+            </ul>
+            <p class="application" id="res-calcul">P = 16 × 600 × 1 × 1 = 9 600 BTU/h</p>
+            <p class="arrondi" id="res-arrondi">On arrondit au modèle du commerce juste au-dessus : 12 000 BTU.</p>
+          </div>
+
+          <a class="bouton bouton-whatsapp" id="calcul-wa" href="https://wa.me/243987554402" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true"><use href="#i-bulle"/></svg>Demander un devis pour cette pièce
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- RÉALISATIONS -->
     <section class="realisations" id="realisations">
       <div class="conteneur">
@@ -660,6 +805,42 @@
       </div>
     </section>
 
+    <!-- QUESTIONS FRÉQUENTES -->
+    <section class="faq" id="faq">
+      <div class="conteneur faq-grille">
+        <div>
+          <h2>Questions fréquentes</h2>
+          <p class="intro">Une autre question ? Écrivez-nous sur WhatsApp, on vous répond.</p>
+        </div>
+        <div class="faq-liste">
+          <details>
+            <summary>Tous les combien faut-il entretenir un climatiseur ?</summary>
+            <p>Cela dépend de l’usage et de la poussière autour de l’appareil. Une clim qui tourne tous les jours a besoin d’un nettoyage des filtres plus souvent qu’une clim utilisée de temps en temps. Dites-nous comment vous l’utilisez et on vous conseille un rythme adapté.</p>
+          </details>
+          <details>
+            <summary>Pourquoi de l’eau coule de mon climatiseur ?</summary>
+            <p>Le plus souvent, l’évacuation de l’eau de condensation est bouchée ou mal inclinée, ou les filtres sont très sales. Coupez l’appareil si l’eau coule sur un mur ou un meuble, et contactez-nous pour un contrôle.</p>
+          </details>
+          <details>
+            <summary>Ma clim tourne mais refroidit mal. Que faire ?</summary>
+            <p>Commencez par vérifier que les filtres ne sont pas encrassés et que portes et fenêtres sont fermées. Si cela ne change rien, il faut un diagnostic : le problème peut venir de l’unité extérieure, du gaz ou d’une pièce électrique.</p>
+          </details>
+          <details>
+            <summary>Combien de temps dure une installation ?</summary>
+            <p>Cela dépend du nombre d’appareils, de la distance entre l’unité intérieure et l’unité extérieure, et de l’accès au mur. On vous donne la durée prévue avant de commencer.</p>
+          </details>
+          <details>
+            <summary>Quelle puissance choisir pour ma pièce ?</summary>
+            <p>Utilisez notre <a href="#calculateur">calculateur</a> pour une première estimation. On confirme toujours sur place, car l’ensoleillement, la hauteur du plafond et le nombre de personnes comptent aussi.</p>
+          </details>
+          <details>
+            <summary>Dans quels quartiers intervenez-vous ?</summary>
+            <p>Nous intervenons à Kinshasa. Indiquez-nous votre commune sur WhatsApp ou dans le formulaire de demande, on vous confirme notre passage.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- À PROPOS -->
     <section class="apropos" id="apropos">
       <div class="conteneur apropos-grille">
@@ -723,6 +904,12 @@
               <svg aria-hidden="true"><use href="#i-tel"/></svg>Appeler le +243 987 554 402
             </a>
           </div>
+          <div class="partage">
+            <p>Satisfait de notre travail ? Recommandez-nous à un proche.</p>
+            <button type="button" class="bouton bouton-partage" data-partage>
+              <svg aria-hidden="true"><use href="#i-partage"/></svg>Partager cette page
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -731,7 +918,10 @@
   <footer>
     <div class="conteneur">
       <span>© <span id="annee">2026</span> Élite Froid, climatisation générale à Kinshasa</span>
-      <a href="#accueil">Retour en haut</a>
+      <span class="footer-liens">
+        <button type="button" class="lien-partage" data-partage>Partager la page</button>
+        <a href="#accueil">Retour en haut</a>
+      </span>
     </div>
   </footer>
 
@@ -878,6 +1068,72 @@
       });
       document.getElementById("visionneuse-fermer").addEventListener("click", () => boite.close());
       boite.addEventListener("click", (e) => { if (e.target === boite) boite.close(); });
+    })();
+
+
+    // Calculateur de puissance : P = S × 600 × ku × ks, arrondi au modèle du commerce
+    (function () {
+      const form = document.getElementById("calcul-form");
+      if (!form) return;
+      const $ = (id) => document.getElementById(id);
+      const nb = (n) => n.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ");
+      const dec = (n) => n.toLocaleString("fr-FR", { maximumFractionDigits: 2 });
+      const modeles = [[9000, "1 CV"], [12000, "1,5 CV"], [18000, "2 CV"], [24000, "2,5 à 3 CV"]];
+
+      function calculer() {
+        const parDim = form.mode.value === "dim";
+        $("bloc-dim").hidden = !parDim;
+        $("bloc-surface").hidden = parDim;
+        let S = parDim ? (parseFloat($("longueur").value) || 0) * (parseFloat($("largeur").value) || 0)
+                       : (parseFloat($("surface").value) || 0);
+        S = Math.round(S * 100) / 100;
+        const ku = parseFloat($("usage").value);
+        const ks = $("soleil").checked ? 1.15 : 1;
+        const P = Math.round(S * 600 * ku * ks);
+        $("res-calcul").textContent = "P = " + dec(S) + " × 600 × " + dec(ku) + " × " + dec(ks) + " = " + nb(P) + " BTU/h";
+
+        let texteWa;
+        if (S <= 0) {
+          $("res-btu").textContent = "–"; $("res-cv").textContent = "Indiquez la taille de la pièce";
+          $("res-arrondi").textContent = "";
+          texteWa = "Bonjour Élite Froid, je voudrais un conseil pour climatiser une pièce.";
+        } else {
+          const m = modeles.find(([btu]) => btu >= P);
+          if (m) {
+            $("res-btu").textContent = nb(m[0]);
+            $("res-cv").textContent = "soit environ " + m[1];
+            $("res-arrondi").textContent = "On arrondit au modèle du commerce juste au-dessus : " + nb(m[0]) + " BTU.";
+          } else {
+            $("res-btu").textContent = "+ de 24 000";
+            $("res-cv").textContent = "plusieurs appareils ou un modèle plus puissant";
+            $("res-arrondi").textContent = "Au-delà de 24 000 BTU, on étudie la pièce avec vous pour choisir la meilleure solution.";
+          }
+          const lieu = $("usage").selectedOptions[0].textContent.toLowerCase();
+          texteWa = "Bonjour Élite Froid, je voudrais un devis pour climatiser une pièce de " + dec(S) + " m² (" + lieu +
+            ($("soleil").checked ? ", très exposée au soleil" : "") + "). Le calculateur du site conseille " +
+            (m ? nb(m[0]) + " BTU (" + m[1] + ")" : "plus de 24 000 BTU") + ".";
+        }
+        $("calcul-wa").href = lienWhatsApp(texteWa);
+      }
+      form.addEventListener("input", calculer);
+      form.addEventListener("change", calculer);
+      form.addEventListener("submit", (e) => e.preventDefault());
+      calculer();
+    })();
+
+    // Partager la page
+    (function () {
+      const url = "https://christian200587.github.io/-lite--froid-/";
+      const texte = "Élite Froid, climatisation à Kinshasa : installation, entretien et dépannage. ";
+      document.querySelectorAll("[data-partage]").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          if (navigator.share) {
+            try { await navigator.share({ title: "Élite Froid", text: texte, url }); return; }
+            catch (e) { if (e && e.name === "AbortError") return; }
+          }
+          window.open("https://wa.me/?text=" + encodeURIComponent(texte + url), "_blank", "noopener");
+        });
+      });
     })();
 
     document.getElementById("annee").textContent = new Date().getFullYear();
